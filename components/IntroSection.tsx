@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const IntroSection = () => {
   return (
@@ -36,12 +37,16 @@ const IntroSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button size="lg" className="group">
-                Start Your Journey
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Button size="lg" className="group" asChild>
+                <Link href="/contact">
+                  Start Your Journey
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
-              <Button variant="outline" size="lg">
-                My Approach
+              <Button variant="outline" size="lg" asChild>
+                <Link href="#about">
+                  My Approach
+                </Link>
               </Button>
             </div>
           </div>

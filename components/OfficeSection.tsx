@@ -60,6 +60,8 @@ const OfficeSection = () => {
                 <button
                   key={idx}
                   onClick={() => setActiveImage(idx)}
+                  aria-label={`Show image ${idx + 1}`}
+                  aria-current={idx === activeImage ? "true" : "false"}
                   className={`w-2 h-2 rounded-full transition-all ${idx === activeImage ? 'bg-white w-8' : 'bg-white/50'}`}
                 />
               ))}

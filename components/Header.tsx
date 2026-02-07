@@ -44,14 +44,19 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
-          <Button size="sm" className="ml-2">
-            <Phone className="w-4 h-4 mr-2" />
-            Book Now
+          <Button size="sm" className="ml-2" asChild>
+            <Link href="/contact">
+              <Phone className="w-4 h-4 mr-2" />
+              Book Now
+            </Link>
           </Button>
         </nav>
 
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label={mobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
           className="md:hidden w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center"
         >
           {mobileMenuOpen ? <X className="w-5 h-5 text-primary" /> : <Menu className="w-5 h-5 text-primary" />}
@@ -59,7 +64,7 @@ const Header = () => {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border">
+        <div id="mobile-menu" className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-b border-border">
           <nav className="container py-6 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -71,9 +76,11 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <Button className="w-full mt-4">
-              <Phone className="w-4 h-4 mr-2" />
-              Book Now
+            <Button className="w-full mt-4" asChild onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/contact">
+                <Phone className="w-4 h-4 mr-2" />
+                Book Now
+              </Link>
             </Button>
           </nav>
         </div>

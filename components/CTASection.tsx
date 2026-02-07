@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Shield, Video, Clock } from "lucide-react";
+import Link from "next/link";
 
 const CTASection = () => {
   const benefits = [
@@ -61,9 +62,11 @@ const CTASection = () => {
           </div>
 
           <div className="text-center space-y-8">
-            <Button size="lg" className="group px-12 py-6 text-lg">
-              Schedule Free Consultation
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Button size="lg" className="group px-12 py-6 text-lg" asChild>
+              <Link href="/contact">
+                Schedule Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
 
             <div className="flex flex-wrap items-center justify-center gap-8 pt-4">

@@ -2,6 +2,7 @@
 
 import { Plus, Minus, MessageCircle, Clock, CreditCard, Video, Calendar } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -68,9 +69,9 @@ const FAQSection = () => {
               <p className="text-muted-foreground mb-6">
                 I'm happy to answer any other questions you might have. Feel free to reach out for a free 15-minute consultation.
               </p>
-              <button className="w-full px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+              <Link href="/contact" className="block w-full px-8 py-3 bg-primary text-primary-foreground rounded-xl font-semibold hover:bg-primary/90 transition-colors text-center">
                 Contact Me
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -78,6 +79,8 @@ const FAQSection = () => {
           <div className="space-y-4">
             {faqs.map((faq, index) => {
               const Icon = faq.icon;
+              const triggerId = `faq-trigger-${index}`;
+              const panelId = `faq-panel-${index}`;
               return (
                 <div
                   key={index}
@@ -86,7 +89,10 @@ const FAQSection = () => {
                   }`}
                 >
                   <button
+                    id={triggerId}
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    aria-expanded={openIndex === index}
+                    aria-controls={panelId}
                     className="w-full p-6 flex items-start justify-between gap-4 text-left"
                   >
                     <div className="flex items-start gap-3 flex-1">
@@ -110,6 +116,9 @@ const FAQSection = () => {
                     </div>
                   </button>
                   <div
+                    id={panelId}
+                    role="region"
+                    aria-labelledby={triggerId}
                     className={`overflow-hidden transition-all duration-300 ${
                       openIndex === index ? 'max-h-96' : 'max-h-0'
                     }`}

@@ -1,6 +1,7 @@
 "use client";
 
 import { Heart, Brain, Flame, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const SpecialtiesSection = () => {
   const specialties = [
@@ -9,21 +10,24 @@ const SpecialtiesSection = () => {
       description:
         "Experiencing constant worry, racing thoughts, physical tension, or difficulty sleeping? I use evidence-based approaches including CBT and mindfulness to help you understand and manage anxiety.",
       icon: Heart,
-      gradient: "from-emerald-500/20 to-teal-500/20"
+      gradient: "from-emerald-500/20 to-teal-500/20",
+      href: "/specialties/anxiety"
     },
     {
       title: "Trauma & PTSD",
       description:
         "Whether from a single incident or long-standing patterns, I provide a safe, trauma-informed space to process difficult experiences and heal at your own pace using proven therapeutic modalities.",
       icon: Brain,
-      gradient: "from-primary/20 to-emerald-600/20"
+      gradient: "from-primary/20 to-emerald-600/20",
+      href: "/specialties/trauma"
     },
     {
       title: "Burnout & Overwhelm",
       description:
         "Feeling exhausted and disconnected after years of pushing through stress? Therapy can help you slow down, reconnect with what matters, and develop more sustainable ways of living.",
       icon: Flame,
-      gradient: "from-teal-500/20 to-primary/20"
+      gradient: "from-teal-500/20 to-primary/20",
+      href: "/specialties/burnout"
     },
   ];
 
@@ -67,10 +71,14 @@ const SpecialtiesSection = () => {
                     {specialty.description}
                   </p>
 
-                  <div className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Link 
+                    href={specialty.href}
+                    className="inline-flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                    aria-label={`Learn more about ${specialty.title}`}
+                  >
                     Learn more
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  </Link>
                 </div>
               </div>
             );

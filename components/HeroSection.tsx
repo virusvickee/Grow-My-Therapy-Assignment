@@ -1,8 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Play, Shield, Award, Heart } from "lucide-react";
+import { ArrowRight, CheckCircle2, Shield, Award, Heart, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const HeroSection = () => {
@@ -60,16 +61,22 @@ const HeroSection = () => {
               <Button
                 size="lg"
                 className="group px-8 py-6 text-base font-semibold shadow-xl hover:shadow-2xl transition-all"
+                asChild
               >
-                Book Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <Link href="/contact">
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="px-8 py-6 text-base font-semibold border-2"
+                asChild
               >
-                View Specialties
+                <Link href="#specialties">
+                  View Specialties
+                </Link>
               </Button>
             </div>
 
@@ -93,41 +100,68 @@ const HeroSection = () => {
           {/* Right Content - Image/Video */}
           <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="/assets/main.png"
-                alt="Dr. Maya Reynolds - Compassionate therapy in Santa Monica"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
-              
-              {/* Video Play Overlay */}
-              {!isVideoPlaying && (
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent flex items-end justify-center pb-12">
-                  <button
-                    onClick={() => setIsVideoPlaying(true)}
-                    className="group flex items-center gap-3 px-6 py-3 bg-background/95 backdrop-blur-sm rounded-full shadow-xl hover:scale-105 transition-transform"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center group-hover:bg-primary/90 transition-colors">
-                      <Play className="w-5 h-5 text-primary-foreground ml-1" fill="currentColor" />
-                    </div>
-                    <span className="font-semibold">Watch Introduction</span>
-                  </button>
+              {!isVideoPlaying ? (
+                <>
+                  <Image
+                    src="/assets/main.png"
+                    alt="Dr. Maya Reynolds - Compassionate therapy in Santa Monica"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                  
+                  {/* Video Play Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent flex items-end justify-center pb-12">
+                    <button
+                      onClick={() => setIsVideoPlaying(true)}
+                      aria-label="Watch introduction video"
+                      className="group flex items-center gap-3 px-6 py-3 bg-background/95 backdrop-blur-sm rounded-full shadow-xl hover:scale-105 transition-transform"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center group-hover:bg-primary/90 transition-colors">
+                        <svg className="w-5 h-5 text-primary-foreground ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                      <span className="font-semibold">Watch Introduction</span>
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="absolute inset-0 bg-foreground/90 flex items-center justify-center">
+                  <div className="relative w-full h-full">
+                    <video
+                      className="w-full h-full object-cover"
+                      controls
+                      autoPlay
+                      src="/assets/intro-video.mp4"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                    <button
+                      onClick={() => setIsVideoPlaying(false)}
+                      aria-label="Close video"
+                      className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
+                    >
+                      <X className="w-5 h-5 text-foreground" />
+                    </button>
+                  </div>
                 </div>
               )}
 
               {/* Floating badges */}
-              <div className="absolute top-6 right-6 flex flex-col gap-3">
-                <div className="bg-background/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                  <Award className="w-6 h-6 text-primary mb-1" />
-                  <div className="text-xs font-semibold">Board Certified</div>
+              {!isVideoPlaying && (
+                <div className="absolute top-6 right-6 flex flex-col gap-3">
+                  <div className="bg-background/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                    <Award className="w-6 h-6 text-primary mb-1" />
+                    <div className="text-xs font-semibold">Board Certified</div>
+                  </div>
+                  <div className="bg-background/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                    <Heart className="w-6 h-6 text-primary mb-1" />
+                    <div className="text-xs font-semibold">Trauma Informed</div>
+                  </div>
                 </div>
-                <div className="bg-background/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
-                  <Heart className="w-6 h-6 text-primary mb-1" />
-                  <div className="text-xs font-semibold">Trauma Informed</div>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Decorative elements */}

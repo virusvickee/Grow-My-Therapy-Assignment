@@ -88,7 +88,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">123th Street 45 W<br />Santa Monica, CA 90401</span>
+                <span className="text-sm text-muted-foreground">123rd Street 45 W<br />Santa Monica, CA 90401</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
@@ -98,7 +98,9 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-sm text-muted-foreground">(555) 123-4567</span>
+                <a href="tel:+15551234567" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  (555) 123-4567
+                </a>
               </li>
             </ul>
           </div>
