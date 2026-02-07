@@ -15,10 +15,12 @@ import ScrollProgress from "@/components/ScrollProgress";
 import CursorTrail from "@/components/CursorTrail";
 import { useImageReveal } from "@/hooks/useImageReveal";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useBarbaAnimation } from "@/hooks/useBarbaAnimation";
 
 export default function Home() {
   useImageReveal();
   useScrollReveal();
+  useBarbaAnimation();
 
   return (
     <div className="min-h-screen bg-background">

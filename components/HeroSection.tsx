@@ -1,78 +1,147 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight, CheckCircle2, Play, Shield, Award, Heart } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
   return (
-    <section className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Organic background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-warm to-secondary/20" />
-      <div className="absolute inset-0 opacity-30">
-        <svg className="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#99BC85', stopOpacity: 0.15 }} />
-              <stop offset="100%" style={{ stopColor: '#E4EFE7', stopOpacity: 0.1 }} />
-            </linearGradient>
-          </defs>
-          <circle cx="15%" cy="25%" r="250" fill="url(#heroGrad)" className="animate-pulse" />
-          <circle cx="85%" cy="75%" r="300" fill="url(#heroGrad)" className="animate-pulse" style={{ animationDelay: '2s' }} />
-        </svg>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-secondary/30 to-accent">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="container relative z-10 py-20 sm:py-32 md:py-40 lg:py-44 max-w-7xl mx-auto">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-12 sm:gap-16 md:gap-12 lg:gap-20 xl:gap-24 items-center">
-
-          {/* Image - First on mobile, Left on tablet+ */}
-          <div className="w-full order-1 md:order-1">
-            <div className="relative w-full max-w-md mx-auto md:max-w-none aspect-[3/4] md:aspect-[4/5]">
-              <Image
-                src="/assets/main.png"
-                alt="Peaceful therapy environment promoting calm and healing"
-                fill
-                className="object-cover rounded-[2rem] shadow-2xl"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
+      <div className="container relative z-10 px-4 py-20 md:py-32 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Content */}
+          <div className="space-y-8 text-center lg:text-left">
+            {/* Trust Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-sm font-medium text-primary animate-fade-in">
+              <Shield className="w-4 h-4" />
+              Licensed Clinical Psychologist • 15+ Years Experience
             </div>
-          </div>
 
-          {/* Content - Second on mobile, Right on tablet+ */}
-          <div className="w-full order-2 md:order-2 text-center md:text-left space-y-8 sm:space-y-10">
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] text-foreground animate-fade-in-up">
-              You don't have to navigate this alone
+            {/* Main Headline with animated text */}
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] text-foreground">
+              <span className="block animate-fade-in-up">Find Your Path</span>
+              <span className="block animate-fade-in-up text-primary" style={{ animationDelay: '0.1s' }}>To Healing</span>
+              <span className="block animate-fade-in-up" style={{ animationDelay: '0.2s' }}>& Growth</span>
             </h1>
             
-            <p className="text-muted-foreground text-lg sm:text-xl md:text-xl lg:text-2xl leading-relaxed max-w-xl mx-auto md:mx-0 animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-              Compassionate therapy for anxiety, trauma, and burnout in Santa Monica, CA
+            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              Evidence-based therapy for anxiety, trauma, and burnout. You deserve support that truly understands you.
             </p>
+
+            {/* Key Benefits */}
+            <div className="flex flex-col sm:flex-row gap-4 text-sm animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span>In-Person & Telehealth</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span>HIPAA Compliant</span>
+              </div>
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span>Insurance Accepted</span>
+              </div>
+            </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               <Button
-                variant="default"
                 size="lg"
-                className="px-10 py-7 text-xs uppercase tracking-[0.25em] font-semibold shadow-xl"
+                className="group px-8 py-6 text-base font-semibold shadow-xl hover:shadow-2xl transition-all"
               >
-                Schedule a Consultation
+                Book Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="px-10 py-7 text-xs uppercase tracking-[0.25em] font-semibold"
+                className="px-8 py-6 text-base font-semibold border-2"
               >
-                Learn More
+                View Specialties
               </Button>
             </div>
 
-            {/* Scroll indicator */}
-            <div className="flex justify-center md:justify-start pt-8 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-              <div className="flex flex-col items-center gap-2 opacity-60">
-                <span className="text-xs text-muted-foreground uppercase tracking-wider">Scroll</span>
-                <ArrowDown className="w-4 h-4 text-muted-foreground animate-bounce" />
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-8 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl font-bold text-primary">500+</div>
+                <div className="text-sm text-muted-foreground">Clients Helped</div>
+              </div>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl font-bold text-primary">15+</div>
+                <div className="text-sm text-muted-foreground">Years Experience</div>
+              </div>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl font-bold text-primary">4.9★</div>
+                <div className="text-sm text-muted-foreground">Client Rating</div>
               </div>
             </div>
           </div>
+
+          {/* Right Content - Image/Video */}
+          <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src="/assets/main.png"
+                alt="Dr. Maya Reynolds - Compassionate therapy in Santa Monica"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+              
+              {/* Video Play Overlay */}
+              {!isVideoPlaying && (
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent flex items-end justify-center pb-12">
+                  <button
+                    onClick={() => setIsVideoPlaying(true)}
+                    className="group flex items-center gap-3 px-6 py-3 bg-background/95 backdrop-blur-sm rounded-full shadow-xl hover:scale-105 transition-transform"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center group-hover:bg-primary/90 transition-colors">
+                      <Play className="w-5 h-5 text-primary-foreground ml-1" fill="currentColor" />
+                    </div>
+                    <span className="font-semibold">Watch Introduction</span>
+                  </button>
+                </div>
+              )}
+
+              {/* Floating badges */}
+              <div className="absolute top-6 right-6 flex flex-col gap-3">
+                <div className="bg-background/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                  <Award className="w-6 h-6 text-primary mb-1" />
+                  <div className="text-xs font-semibold">Board Certified</div>
+                </div>
+                <div className="bg-background/95 backdrop-blur-sm rounded-2xl p-4 shadow-xl">
+                  <Heart className="w-6 h-6 text-primary mb-1" />
+                  <div className="text-xs font-semibold">Trauma Informed</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative elements */}
+            <div className="absolute -z-10 -top-6 -right-6 w-full h-full border-2 border-primary/20 rounded-3xl" />
+            <div className="absolute -z-20 -bottom-6 -left-6 w-full h-full bg-primary/5 rounded-3xl" />
+          </div>
         </div>
+      </div>
+
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="hsl(var(--background))" fillOpacity="0.5"/>
+        </svg>
       </div>
     </section>
   );
