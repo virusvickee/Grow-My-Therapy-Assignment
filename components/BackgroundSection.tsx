@@ -34,7 +34,7 @@ const BackgroundSection = () => {
   ];
 
   return (
-    <section className="py-32 md:py-40 relative overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background">
+    <section className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background">
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 right-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />

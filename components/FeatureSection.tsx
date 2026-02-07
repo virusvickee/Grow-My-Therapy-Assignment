@@ -14,7 +14,7 @@ const FeatureSection = () => {
   ];
 
   return (
-    <section className="py-32 md:py-40 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/20 to-background" />
       <div className="absolute top-20 left-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl" />
       <div className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-secondary/10 blur-3xl" />

@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const IntroSection = () => {
   return (
-    <section className="py-32 md:py-40 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/30 to-background" />
       
       <div className="container relative z-10">
