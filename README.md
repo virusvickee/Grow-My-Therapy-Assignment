@@ -1,22 +1,22 @@
 # Dr. Maya Reynolds - Therapy Website
 
-A modern, professional therapy website built with Next.js, TypeScript, and Tailwind CSS. Features a calm, healing-focused design with sage green and cream color palette.
+A modern, professional therapy website built with Next.js, TypeScript, and Tailwind CSS. Features a calm, healing-focused design with sage green and mint color palette.
 
 ## 🎨 Design Philosophy
 
 This website is designed specifically for a therapy practice, prioritizing:
-- **Calm & Welcoming** - Soft colors and generous white space
+- **Calm & Welcoming** - Soft green tones and generous white space
 - **Professional Trust** - Clean typography and credible presentation
 - **Accessibility** - WCAG AA compliant with semantic HTML
-- **Emotional Connection** - Warm, empathetic copy and imagery
+- **Emotional Connection** - Warm, empathetic copy directly from therapist profile
 
 ## 🌿 Color Palette
 
-- **Primary (Sage Green)**: `#99BC85` - Represents calm, growth, and healing
-- **Secondary (Light Mint)**: `#E4EFE7` - Soft, tranquil accent
-- **Background (Cream)**: `#FAF1E6` - Warm, comfortable base
-- **Warm Accent**: `#FDFAF6` - Light cream for subtle contrast
-- **Text (Dark Gray)**: `#3D3530` - Readable, professional
+- **Primary (Sage Green)**: `hsl(145, 35%, 45%)` - Represents calm, growth, and healing
+- **Secondary (Light Mint)**: `hsl(140, 30%, 88%)` - Soft, tranquil accent
+- **Background (Soft Green)**: `hsl(140, 25%, 96%)` - Light, comfortable base
+- **Accent (Mint)**: `hsl(145, 40%, 92%)` - Fresh, calming highlight
+- **Text (Dark Green)**: `hsl(150, 20%, 15%)` - Readable, professional
 
 ## 📝 Typography
 
@@ -37,9 +37,6 @@ This website is designed specifically for a therapy practice, prioritizing:
 ## 📦 Installation
 
 ```bash
-# Navigate to project directory
-cd "vikas uniyal"
-
 # Install dependencies
 npm install
 
@@ -52,41 +49,49 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 ## 🏗️ Project Structure
 
 ```
-vikas uniyal/
 ├── app/
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx            # Home page
-│   └── globals.css         # Global styles & theme
+│   ├── layout.tsx          # Root layout with metadata & SEO
+│   ├── page.tsx            # Home page with all sections
+│   └── globals.css         # Global styles & theme variables
 ├── components/
-│   ├── HeroSection.tsx     # Hero with CTA
-│   ├── IntroSection.tsx    # Introduction
-│   ├── SpecialtiesSection.tsx  # Areas of focus
-│   ├── FeatureSection.tsx  # Key benefits
-│   ├── AboutSection.tsx    # Dr. Maya's bio
-│   ├── OfficeSection.tsx   # Office photos & info
-│   ├── FAQSection.tsx      # Common questions
-│   ├── BackgroundSection.tsx   # Training & credentials
-│   ├── CTASection.tsx      # Call-to-action
-│   ├── Header.tsx          # Navigation
-│   ├── Footer.tsx          # Footer with contact
-│   └── ui/                 # Reusable UI components
-├── hooks/                  # Custom React hooks
+│   ├── HeroSection.tsx     # Hero with animated headline & CTA
+│   ├── IntroSection.tsx    # Introduction to therapy approach
+│   ├── SpecialtiesSection.tsx  # 3 main areas of focus
+│   ├── FeatureSection.tsx  # Client pain points & solutions
+│   ├── AboutSection.tsx    # Dr. Maya's bio & credentials
+│   ├── OfficeSection.tsx   # Office photos & location info
+│   ├── FAQSection.tsx      # Accordion-style FAQs
+│   ├── BackgroundSection.tsx   # Training & expertise cards
+│   ├── CTASection.tsx      # Final call-to-action
+│   ├── Header.tsx          # Auto-hide navigation
+│   ├── Footer.tsx          # Contact & quick links
+│   ├── ScrollProgress.tsx  # Progress bar indicator
+│   ├── CursorTrail.tsx     # Custom cursor effect
+│   └── ui/                 # shadcn/ui components
+├── hooks/
+│   ├── useImageReveal.ts   # Image reveal animations
+│   ├── useScrollReveal.ts  # Scroll-based animations
+│   └── useBarbaAnimation.ts # Page transitions
 ├── lib/                    # Utility functions
-└── public/assets/          # Images and static files
+└── public/assets/          # Images (office, portraits, sections)
 ```
 
 ## 🌟 Key Sections
 
 ### 1. Hero Section
-- Empathetic headline: "You don't have to navigate this alone"
-- Clear value proposition
+- Empathetic headline: "Find Your Path To Healing & Growth"
+- Trust badge: "Licensed Clinical Psychologist • 15+ Years Experience"
+- Clear value proposition: "Evidence-based therapy for anxiety, trauma, and burnout"
 - Primary CTA: "Schedule a Consultation"
-- Clean, professional image presentation
+- Video modal feature with trust indicators
+- Animated background elements
 
 ### 2. Introduction
 - "You deserve to feel grounded again"
-- Describes target clients (high-achieving adults)
-- Emphasizes trauma-informed approach
+- Describes target clients: high-achieving, thoughtful adults
+- Addresses internal struggles vs external functionality
+- Emphasizes trauma-informed, collaborative approach
+- Dual CTA buttons
 
 ### 3. Areas of Focus
 - **Anxiety & Panic** - CBT and mindfulness approaches
@@ -162,15 +167,15 @@ vikas uniyal/
 ## 🎯 SEO Optimization
 
 ### Meta Tags
-- **Title**: "Anxiety & Trauma Therapy in Santa Monica, CA | Dr. Maya Reynolds, PsyD"
-- **Description**: Optimized for search engines (156 characters)
-- **Keywords**: Location-based therapy keywords
+- **Title**: "Dr. Maya Reynolds | Anxiety & Trauma Therapy in Santa Monica, CA"
+- **Description**: "Compassionate, trauma-informed therapy for adults navigating anxiety, PTSD, and burnout. Licensed clinical psychologist in Santa Monica offering in-person and telehealth sessions."
+- **Keywords**: "anxiety therapy Santa Monica, trauma therapy Santa Monica, PTSD treatment, burnout therapy, licensed psychologist Santa Monica, trauma-informed therapy, adult therapy California"
 - **Open Graph**: Social media sharing optimization
 
 ### Content Strategy
 - **Primary Keywords**: "anxiety therapy Santa Monica", "trauma therapy Santa Monica"
-- **H1**: Clear, keyword-rich heading
-- **Location**: Santa Monica mentioned 8+ times naturally
+- **H1**: "Find Your Path To Healing & Growth"
+- **Location**: Santa Monica mentioned throughout naturally
 - **Specialties**: Anxiety, Trauma, Burnout clearly defined
 - **Credentials**: Licensed Clinical Psychologist, PsyD
 
@@ -203,9 +208,10 @@ npm run lint         # Run ESLint
 Edit `app/globals.css`:
 ```css
 :root {
-  --primary: 100 30% 63%;      /* Sage green */
-  --background: 40 50% 95%;    /* Cream */
-  --secondary: 135 30% 92%;    /* Light mint */
+  --primary: 145 35% 45%;      /* Sage green */
+  --background: 140 25% 96%;   /* Soft green */
+  --secondary: 140 30% 88%;    /* Light mint */
+  --accent: 145 40% 92%;       /* Mint accent */
 }
 ```
 
